@@ -16,7 +16,7 @@ class WH_Social_Widget extends WP_Widget {
 	}
 
 	public function widget( array $args, array $instance ): void {
-		echo $args['begore_widget'];
+		echo $args['before_widget'];
 		if ( isset( $instance['title'] ) ) {
 			$title = apply_filters( 'widget_title', $instance['title'] );
 			echo $args['before_title'] . $title . $args['after_title'];
@@ -26,7 +26,6 @@ class WH_Social_Widget extends WP_Widget {
 		if ( ! empty( $template ) ) {
 			include_once( $template );
 		}
-		echo get_template_part( 'widgets/social' );
 		echo $args['after_widget'];
 	}
 
