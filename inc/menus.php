@@ -17,6 +17,14 @@ add_action( 'widgets_init', function () {
 		                  'before_widget' => '<div class="footer__col">',
 		                  'after_widget'  => '</div>'
 	                  ] );
+	register_sidebar( [
+		                  'id'            => 'blog',
+		                  'name'          => __( 'Blog sidebar', 'wh' ),
+		                  'before_title'  => '<div class="sidebar__title">',
+		                  'after_title'   => '</div>',
+		                  'before_widget' => '<div class="sidebar__widget">',
+		                  'after_widget'  => '</div>'
+	                  ] );
 
 
 } );

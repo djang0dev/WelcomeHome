@@ -22,7 +22,7 @@ class WH_Social_Widget extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 
 		}
-		$template = locate_template( 'widgets/social.php' );
+		$template = locate_template( 'template-parts/widgets/social.php' );
 		if ( ! empty( $template ) ) {
 			include_once( $template );
 		}
