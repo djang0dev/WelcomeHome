@@ -29,25 +29,7 @@
 
 
                     </div>
-
-
-                    <div class="pagination">
-                        <a class="page-numbers prev" href="news.html">
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
-                        </a>
-                        <a class="page-numbers" href="news.html">1</a>
-                        <a class="page-numbers" href="news.html">2</a>
-                        <a class="page-numbers" href="news.html">3</a>
-                        <span aria-current="page" class="page-numbers current">4</span>
-                        <a class="page-numbers" href="news.html">5</a>
-                        <a class="page-numbers next" href="news.html">
-                            <svg class="icon">
-                                <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                            </svg>
-                        </a>
-                    </div>
+                
 
 				<?php else: ?>
                     <h2><?= __( 'No posts found', 'wh' ) ?></h2>

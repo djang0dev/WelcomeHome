@@ -5,3 +5,45 @@ Version: 0.1
 Requires at least: 5.4
 Requires PHP: 7.2
 */
+
+.formatted .blocks-gallery-grid {
+    display: flex;
+    margin-left: 0;
+}
+
+.formatted .blocks-gallery-grid li {
+    padding-left: 0;
+}
+
+.formatted .blocks-gallery-grid li:last-child {
+    margin-bottom: 16px !important;
+}
+
+.formatted .blocks-gallery-grid li::before {
+    display: none;
+
+}
+
+.formatted .wp-block-button {
+    margin-bottom: 1.5em;
+}
+
+.comment .edit-link::before,
+.comment .reply::before {
+    content: ' - ';
+}
+
+.form-2column .comment-notes,
+.form-2column .comment-form-cookies-consent,
+.form-2column .form-submit {
+    grid-column: 1/-1;
+}
+
+.comment .comment {
+    margin-top: 1em;
+    margin-left: 75px;
+}
+
+.current_page_parent {
+    color: #FE6748;
+}
