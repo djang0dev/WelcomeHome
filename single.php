@@ -20,7 +20,7 @@
                 <div class="formatted">
 					<?php if ( has_post_thumbnail() ): ?>
                         <p>
-							<?= the_post_thumbnail( 'large' ); ?>
+							<?php the_post_thumbnail( 'large' ); ?>
                         </p>
 					<?php endif ?>
 					<?php the_content(); ?>

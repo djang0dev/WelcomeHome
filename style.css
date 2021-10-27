@@ -47,3 +47,9 @@ Requires PHP: 7.2
 .current_page_parent {
     color: #FE6748;
 }
+
+.comment .comment {
+    margin-top: 1rem !important;
+    margin-left: 75px !important;
+    grid-column: 1/-1 !important;
+}

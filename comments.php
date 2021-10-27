@@ -10,10 +10,16 @@ $count = absint( get_comments_number() );
 			<?= __( 'Leave a reply', 'wh' ) ?>
 		<?php endif; ?>
     </div>
-	<?php wp_list_comments( [
-		                        'style'  => 'div',
-		                        'walker' => new WHCommentWalker(),
-	                        ] ); ?>
+    <div class="comments_list">
+		<?php wp_list_comments( [
+			                        'style'  => 'div',
+			                        'walker' => new WHCommentWalker(),
+		                        ] ); ?>
+    </div>
+	<?php wh_paginate_comments() ?>
+
 	<?php if ( comments_open() ): ?>
-	<?php comment_form( [ 'title_reply' => '', ] ) ?>
+
+		<?php comment_form( [ 'title_reply' => '', 'class_form' => 'form-2column', 'class_submit' => 'btn' ] ) ?>
+	<?php endif; ?>
 </div>
