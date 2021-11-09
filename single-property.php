@@ -8,15 +8,7 @@
                 <h1 class="bien__title"><?php the_title() ?> - <?php the_field( 'surface' ); ?>m²</h1>
                 <div class="bien__meta">
                     <div class="bien__location"><?php wh_city(); ?></div>
-                    <div class="bien__price">
-						<?php if ( get_field( 'property_category' ) === 'buy' ): ?>
-
-							<?= sprintf( '%s $', get_field( 'price' ) ) ?>
-
-						<?php else: ?>
-							<?= sprintf( '%s $/mo', get_field( 'price' ) ) ?>
-
-						<?php endif; ?>
+                    <div class="bien__price"><?php wh_price(); ?>
                     </div>
                 </div>
                 <div class="bien__actions">
@@ -48,6 +40,7 @@
                                  src="<?= wp_get_attachment_image_url( $media->ID, 'property-carousel' ) ?>">
                         </a>
 					<?php endforeach; ?>
+
                 </div>
             </div>
         </header>
@@ -63,7 +56,7 @@
         <section class="bien-options">
             <div class="bien-option"><img alt=""
                                           src="<?= get_template_directory_uri() . '/assets/' ?>area.78237e19.svg">
-				<?= __( 'Surface', 'wh' ) ?><?php the_field( 'surface' ) ?>m²
+				<?= __( 'Surface', 'wh' ) ?> : <?php the_field( 'surface' ) ?>m²
             </div>
 
             <div class="bien-option"><img alt=""
@@ -73,7 +66,7 @@
             </div>
             <div class="bien-option"><img alt=""
                                           src="<?= get_template_directory_uri() . '/assets/' ?>elevator.e0bdbd67.svg">
-				<?= __( 'Floor', 'wh' ) ?>: <?php the_field( 'floor' ) ?>
+				<?= __( 'Floor', 'wh' ) ?> : <?php the_field( 'floor' ) ?>
             </div>
 
 			<?php $options = get_the_terms( get_post(), 'property_option' ); ?>

@@ -5,8 +5,9 @@ require_once( 'inc/apparence.php' );
 require_once( 'inc/menus.php' );
 require_once( 'inc/images.php' );
 require_once( 'inc/query/posts.php' );
+require_once( 'inc/query/property.php' );
 require_once( 'inc/comments.php' );
-
+require_once( 'inc/style.php' );
 function wh_icon( string $name ): string {
 	$spriteUrl = get_template_directory_uri() . '/assets/sprite.14d9fd56.svg';
 
