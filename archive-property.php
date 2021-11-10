@@ -35,49 +35,7 @@ $currentRooms = get_query_var( 'rooms' );
 				<?php endif; ?>
             </p>
             <hr>
-            <form action="" class="search-form__form">
-                <!--                <div class="search-form__checkbox">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" <?php /*checked( ! $isRent ); */ ?> type="radio" name="type" id="buy"
-                               value="buy">
-                        <label class="form-check-label" for="buy"><? /*= __( 'Buy', 'wh' ) */ ?></label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" <?php /*checked( $isRent ); */ ?>type="radio" name="type" id="rent"
-                               value="rent">
-                        <label class="form-check-label" for="rent"><? /*= __( 'Rent', 'wh' ) */ ?></label>
-                    </div>
-                </div>
--->
-                <div class="form-group">
-                    <select name="city" id="city" class="form-control">
-						<?php foreach ( $cities as $city ): ?>
-                            <option value="<?= $city->slug; ?>" <?php selected( $city->slug, $currentCity ) ?>><?= $city->name; ?></option>
-						<?php endforeach; ?>
-                    </select>
-                    <label for="city"><?= __( 'City', 'wh' ) ?></label>
-                </div>
-                <div class="form-group">
-                    <input type="number" class="form-control" id="budget" placeholder="100 000 €" name="price"
-                           value="<?= esc_attr( $currentPrice ) ?>">
-                    <label for="budget"><?= __( 'Budget', 'wh' ) ?></label>
-                </div>
-                <div class="form-group">
-                    <select name="property_type" id="property_type" class="form-control">
-                        <option value=""><?= __( 'All types', 'wh' ) ?></option>
-						<?php foreach ( $types as $type ): ?>
-                            <option value="<?= $type->slug; ?>" <?php selected( $type->slug, $currentType ) ?>><?= $type->name; ?></option>
-						<?php endforeach; ?>
-                    </select>
-                    <label for="property_type"><?= __( 'Search', 'wh' ) ?></label>
-                </div>
-                <div class="form-group">
-                    <input type="number" name="rooms" class="form-control" id="rooms" placeholder="4"
-                           value="<?= esc_attr( $currentRooms ) ?>">
-                    <label for="rooms"><?= __( 'Rooms', 'wh' ) ?></label>
-                </div>
-                <button type="submit" class="btn btn-filled"><?= __( 'Search', 'wh' ) ?></button>
-            </form>
+			<?php get_template_part( 'template-parts/searchform-property' ) ?>
         </div>
 
 		<?php $i = 0;

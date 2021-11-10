@@ -11,39 +11,7 @@
                     <h1 class="search-form__title"><?php the_title() ?></h1>
 					<?php the_content() ?>
                     <hr>
-                    <form action="listing.html" class="search-form__form">
-                        <div class="search-form__checkbox">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" checked="" type="radio" name="type" id="buy"
-                                       value="buy">
-                                <label class="form-check-label" for="buy">Acheter</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="type" id="rent" value="rent">
-                                <label class="form-check-label" for="rent">Louer</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="city" placeholder="Montpellier">
-                            <label for="city">Ville</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="number" class="form-control" id="budget" placeholder="100 000 €">
-                            <label for="budget">Prix max</label>
-                        </div>
-                        <div class="form-group">
-                            <select name="kind" id="kind" class="form-control">
-                                <option value="flat">Appartement</option>
-                                <option value="villa">Villa</option>
-                            </select>
-                            <label for="kind">Type</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="number" class="form-control" id="rooms" placeholder="4">
-                            <label for="rooms">Pièces</label>
-                        </div>
-                        <button type="submit" class="btn btn-filled">Rechercher</button>
-                    </form>
+					<?php get_template_part( 'template-parts/searchform-property' ) ?>
                 </div>
 
             </div>
@@ -154,19 +122,15 @@
                         <div class="news-overlay">
 
                             <picture>
-                                <source media="(max-width: 545px)" srcset="https://picsum.photos/id/851/910/700.jpg">
-                                <source media="(max-width: 950px)" srcset="https://picsum.photos/id/851/910/500.jpg">
-                                <img src="https://picsum.photos/id/851/912/318.jpg">
+                                <img src="<?= get_sub_field( 'background' )['sizes']['post-thumbnail-home'] ?>">
                             </picture>
                             <div class="news-overlay__body">
                                 <div class="news-overlay__title">
-                                    Consultez tous nos articles <br> liés à l'immobilier
+									<?= __( 'Consult all our articles <br> related to real estate', 'wh' ) ?>
                                 </div>
-                                <a href="#" class="news-overlay__btn btn">
-                                    Lire nos articles
-                                    <svg class="icon">
-                                        <use xlink:href="sprite.14d9fd56.svg#arrow"></use>
-                                    </svg>
+                                <a href="<?= get_post_type_archive_link( 'post' ) ?>" class="news-overlay__btn btn">
+									<?= __( 'Read our articles', 'wh' ) ?>
+									<?= wh_icon( 'arrow' ); ?>
                                 </a>
                             </div>
                         </div>
@@ -177,27 +141,30 @@
             </section>
 		<?php endwhile;
 		endif ?>
-
-        <!-- Newsletter -->
-        <section class="newsletter">
-            <form class="newsletter__body">
-                <div class="newsletter__title">Restez connecté</div>
-                <p>
-                    Recevez les dernières nouveautés concernant l'agence en vous inscrivant à notre newsletter
-                </p>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
-                    <label for="email">Votre email</label>
+		<?php if ( have_rows( 'newsletter' ) ): while ( have_rows( 'newsletter' ) ):
+			the_row() ?>
+            <!-- Newsletter -->
+            <section class="newsletter">
+                <form class="newsletter__body">
+                    <div class="newsletter__title"><?php the_sub_field( 'title' ); ?></div>
+                    <p>
+						<?php the_sub_field( 'description' ); ?>
+                    </p>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email"
+                               placeholder="<?= __( 'Enter your email', 'wh' ) ?>">
+                        <label for="email"><?= __( 'Your email', 'wh' ) ?></label>
+                    </div>
+                    <!--
+					<input type="email" class="form-control" placeholder="Enter your email adress">
+					-->
+                    <button type="submit" class="btn"><?= __( 'Signup', 'wh' ) ?></button>
+                </form>
+                <div class="newsletter__image">
+                    <img src="<?php the_sub_field( 'avatar' ) ?>" alt="">
                 </div>
-                <!--
-				<input type="email" class="form-control" placeholder="Enter your email adress">
-				-->
-                <button type="submit" class="btn">S'inscrire</button>
-            </form>
-            <div class="newsletter__image">
-                <img src="man.87215a62.png" alt="">
-            </div>
-        </section>
+            </section>
+		<?php endwhile; endif; ?>
 
     </main>
 
