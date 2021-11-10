@@ -16,8 +16,24 @@ $currentRooms = get_query_var( 'rooms' );
 ?>
     <div class="container page-properties">
         <div class="search-form">
-            <h1 class="search-form__title">Agence immo Montpellier</h1>
-            <p>Retrouver tous nos biens sur le secteur de <strong>Montpellier</strong></p>
+            <h1 class="search-form__title">
+				<?= __( 'All our properties', 'wh' ) ?>
+				<?php if ( $isRent ): ?>
+					<?= __( '<br> for Rent', 'wh' ) ?>
+				<?php else: ?>
+					<?= __( '<br> on Sale', 'wh' ) ?>
+				<?php endif; ?>
+
+            </h1>
+            <p>
+				<?= __( 'Find all our properties in the area of', 'wh' );
+				?>
+				<?php if ( strlen( $currentCity ) > 1 ): ?>
+                    <strong><?= ucwords( $currentCity ) ?></strong>
+				<?php else: ?>
+                    <strong><?= __( 'all our agencies', 'wh' ) ?></strong>
+				<?php endif; ?>
+            </p>
             <hr>
             <form action="" class="search-form__form">
                 <!--                <div class="search-form__checkbox">
@@ -44,7 +60,7 @@ $currentRooms = get_query_var( 'rooms' );
                 <div class="form-group">
                     <input type="number" class="form-control" id="budget" placeholder="100 000 €" name="price"
                            value="<?= esc_attr( $currentPrice ) ?>">
-                    <label for="budget"><?= __( 'Max Price', 'wh' ) ?></label>
+                    <label for="budget"><?= __( 'Budget', 'wh' ) ?></label>
                 </div>
                 <div class="form-group">
                     <select name="property_type" id="property_type" class="form-control">
@@ -66,18 +82,11 @@ $currentRooms = get_query_var( 'rooms' );
 
 		<?php $i = 0;
 		while ( have_posts() ) : the_post(); ?>
-            <a class="property <?= $i === 7 ? 'property--large' : '' ?>" href="<?php the_permalink(); ?>"
-               title="<?= esc_attr( get_the_title() ); ?>">
-                <div class="property__image">
-					<?php the_post_thumbnail( $i === 7 ? 'property-thumbnail-large' : 'property-thumbnail' ); ?>
 
-                </div>
-                <div class="property__body">
-                    <div class="property__location"><?php wh_city(); ?></div>
-                    <h3 class="property__title"><?php the_title() ?> - <?php the_field( 'surface' ); ?>m²</h3>
-                    <div class="property__price"><?php wh_price(); ?></div>
-                </div>
-            </a>
+			<?php
+			// renvoie true si $i = 7
+			set_query_var( 'property-large', $i === 7 ); ?>
+			<?php get_template_part( 'template-parts/property' ); ?>
 			<?php $i ++;
 		endwhile; ?>
 
